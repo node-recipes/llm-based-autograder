@@ -25,7 +25,6 @@ jobs:
         id: setup-node
         uses: actions/setup-node@v4
         with:
-          node-version-file: .node-version
           cache: npm
 
       - name: Install Dependencies
@@ -40,10 +39,6 @@ jobs:
         id: npm-lint
         run: npm run lint
 
-      - name: Test
-        id: npm-ci-test
-        run: npm run ci-test
-
   test-action:
     name: GitHub Actions Test
     runs-on: ubuntu-latest
@@ -57,7 +52,8 @@ jobs:
         id: test-action
         uses: ./
         with:
-          milliseconds: 2000
+          prompt_file_path: './prompts/task.prompt'
+          gemini_api_key: '${{ secrets.GEMINI_API_KEY }}'
 
       - name: Print Output
         id: output

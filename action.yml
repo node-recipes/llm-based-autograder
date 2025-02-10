@@ -1,23 +1,22 @@
-name: The name of your action here
-description: Provide a description here
-author: Your name or organization here
+name: LLM Based Autograder
+description: Autograder for GitHub Classroom assignments using LLM
+author: Nikita Galkin
 
-# Add your action's branding here. This will appear on the GitHub Marketplace.
 branding:
-  icon: heart
-  color: red
+  icon: check-circle
+  color: blue
 
-# Define your inputs here.
 inputs:
-  milliseconds:
-    description: Your input description here
+  prompt_file_path:
+    description: Path to for the assignment
     required: true
-    default: '1000'
+  gemini_api_key:
+    description: Gemini API key
+    required: true
 
-# Define your outputs here.
 outputs:
-  time:
-    description: Your output description here
+  result:
+    description: 'Runner output'
 
 runs:
   using: node20

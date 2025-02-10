@@ -1,3 +1,5 @@
+import { access, readFile } from 'node:fs/promises';
+import path from 'node:path';
 import require$$0 from 'os';
 import require$$0$1 from 'crypto';
 import require$$1 from 'fs';
@@ -44,7 +46,7 @@ function requireUtils$1 () {
 	// We use any as a valid input type
 	/* eslint-disable @typescript-eslint/no-explicit-any */
 	Object.defineProperty(utils$1, "__esModule", { value: true });
-	utils$1.toCommandProperties = utils$1.toCommandValue = undefined;
+	utils$1.toCommandProperties = utils$1.toCommandValue = void 0;
 	/**
 	 * Sanitizes an input into a string so it can be passed into issueCommand safely
 	 * @param input input to sanitize into a string
@@ -112,7 +114,7 @@ function requireCommand () {
 	    return result;
 	};
 	Object.defineProperty(command, "__esModule", { value: true });
-	command.issue = command.issueCommand = undefined;
+	command.issue = command.issueCommand = void 0;
 	const os = __importStar(require$$0);
 	const utils_1 = requireUtils$1();
 	/**
@@ -218,7 +220,7 @@ function requireFileCommand () {
 	    return result;
 	};
 	Object.defineProperty(fileCommand, "__esModule", { value: true });
-	fileCommand.prepareKeyValueMessage = fileCommand.issueFileCommand = undefined;
+	fileCommand.prepareKeyValueMessage = fileCommand.issueFileCommand = void 0;
 	// We use any as a valid input type
 	/* eslint-disable @typescript-eslint/no-explicit-any */
 	const crypto = __importStar(require$$0$1);
@@ -269,7 +271,7 @@ function requireProxy () {
 	if (hasRequiredProxy) return proxy;
 	hasRequiredProxy = 1;
 	Object.defineProperty(proxy, "__esModule", { value: true });
-	proxy.checkBypass = proxy.getProxyUrl = undefined;
+	proxy.checkBypass = proxy.getProxyUrl = void 0;
 	function getProxyUrl(reqUrl) {
 	    const usingSsl = reqUrl.protocol === 'https:';
 	    if (checkBypass(reqUrl)) {
@@ -8198,7 +8200,7 @@ function requireUtils () {
 	if (hasRequiredUtils) return utils;
 	hasRequiredUtils = 1;
 	Object.defineProperty(utils, "__esModule", { value: true });
-	utils.enumToMap = undefined;
+	utils.enumToMap = void 0;
 	function enumToMap(obj) {
 	    const res = {};
 	    Object.keys(obj).forEach((key) => {
@@ -8221,7 +8223,7 @@ function requireConstants$2 () {
 	hasRequiredConstants$2 = 1;
 	(function (exports) {
 		Object.defineProperty(exports, "__esModule", { value: true });
-		exports.SPECIAL_HEADERS = exports.HEADER_STATE = exports.MINOR = exports.MAJOR = exports.CONNECTION_TOKEN_CHARS = exports.HEADER_CHARS = exports.TOKEN = exports.STRICT_TOKEN = exports.HEX = exports.URL_CHAR = exports.STRICT_URL_CHAR = exports.USERINFO_CHARS = exports.MARK = exports.ALPHANUM = exports.NUM = exports.HEX_MAP = exports.NUM_MAP = exports.ALPHA = exports.FINISH = exports.H_METHOD_MAP = exports.METHOD_MAP = exports.METHODS_RTSP = exports.METHODS_ICE = exports.METHODS_HTTP = exports.METHODS = exports.LENIENT_FLAGS = exports.FLAGS = exports.TYPE = exports.ERROR = undefined;
+		exports.SPECIAL_HEADERS = exports.HEADER_STATE = exports.MINOR = exports.MAJOR = exports.CONNECTION_TOKEN_CHARS = exports.HEADER_CHARS = exports.TOKEN = exports.STRICT_TOKEN = exports.HEX = exports.URL_CHAR = exports.STRICT_URL_CHAR = exports.USERINFO_CHARS = exports.MARK = exports.ALPHANUM = exports.NUM = exports.HEX_MAP = exports.NUM_MAP = exports.ALPHA = exports.FINISH = exports.H_METHOD_MAP = exports.METHOD_MAP = exports.METHODS_RTSP = exports.METHODS_ICE = exports.METHODS_HTTP = exports.METHODS = exports.LENIENT_FLAGS = exports.FLAGS = exports.TYPE = exports.ERROR = void 0;
 		const utils_1 = requireUtils();
 		(function (ERROR) {
 		    ERROR[ERROR["OK"] = 0] = "OK";
@@ -24386,7 +24388,7 @@ function requireLib () {
 	    });
 	};
 	Object.defineProperty(lib, "__esModule", { value: true });
-	lib.HttpClient = lib.isHttps = lib.HttpClientResponse = lib.HttpClientError = lib.getProxyUrl = lib.MediaTypes = lib.Headers = lib.HttpCodes = undefined;
+	lib.HttpClient = lib.isHttps = lib.HttpClientResponse = lib.HttpClientError = lib.getProxyUrl = lib.MediaTypes = lib.Headers = lib.HttpCodes = void 0;
 	const http = __importStar(require$$2);
 	const https = __importStar(require$$3);
 	const pm = __importStar(requireProxy());
@@ -24469,8 +24471,8 @@ function requireLib () {
 	        this.message = message;
 	    }
 	    readBody() {
-	        return __awaiter(this, undefined, undefined, function* () {
-	            return new Promise((resolve) => __awaiter(this, undefined, undefined, function* () {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
 	                let output = Buffer.alloc(0);
 	                this.message.on('data', (chunk) => {
 	                    output = Buffer.concat([output, chunk]);
@@ -24482,8 +24484,8 @@ function requireLib () {
 	        });
 	    }
 	    readBodyBuffer() {
-	        return __awaiter(this, undefined, undefined, function* () {
-	            return new Promise((resolve) => __awaiter(this, undefined, undefined, function* () {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            return new Promise((resolve) => __awaiter(this, void 0, void 0, function* () {
 	                const chunks = [];
 	                this.message.on('data', (chunk) => {
 	                    chunks.push(chunk);
@@ -24540,42 +24542,42 @@ function requireLib () {
 	        }
 	    }
 	    options(requestUrl, additionalHeaders) {
-	        return __awaiter(this, undefined, undefined, function* () {
+	        return __awaiter(this, void 0, void 0, function* () {
 	            return this.request('OPTIONS', requestUrl, null, additionalHeaders || {});
 	        });
 	    }
 	    get(requestUrl, additionalHeaders) {
-	        return __awaiter(this, undefined, undefined, function* () {
+	        return __awaiter(this, void 0, void 0, function* () {
 	            return this.request('GET', requestUrl, null, additionalHeaders || {});
 	        });
 	    }
 	    del(requestUrl, additionalHeaders) {
-	        return __awaiter(this, undefined, undefined, function* () {
+	        return __awaiter(this, void 0, void 0, function* () {
 	            return this.request('DELETE', requestUrl, null, additionalHeaders || {});
 	        });
 	    }
 	    post(requestUrl, data, additionalHeaders) {
-	        return __awaiter(this, undefined, undefined, function* () {
+	        return __awaiter(this, void 0, void 0, function* () {
 	            return this.request('POST', requestUrl, data, additionalHeaders || {});
 	        });
 	    }
 	    patch(requestUrl, data, additionalHeaders) {
-	        return __awaiter(this, undefined, undefined, function* () {
+	        return __awaiter(this, void 0, void 0, function* () {
 	            return this.request('PATCH', requestUrl, data, additionalHeaders || {});
 	        });
 	    }
 	    put(requestUrl, data, additionalHeaders) {
-	        return __awaiter(this, undefined, undefined, function* () {
+	        return __awaiter(this, void 0, void 0, function* () {
 	            return this.request('PUT', requestUrl, data, additionalHeaders || {});
 	        });
 	    }
 	    head(requestUrl, additionalHeaders) {
-	        return __awaiter(this, undefined, undefined, function* () {
+	        return __awaiter(this, void 0, void 0, function* () {
 	            return this.request('HEAD', requestUrl, null, additionalHeaders || {});
 	        });
 	    }
 	    sendStream(verb, requestUrl, stream, additionalHeaders) {
-	        return __awaiter(this, undefined, undefined, function* () {
+	        return __awaiter(this, void 0, void 0, function* () {
 	            return this.request(verb, requestUrl, stream, additionalHeaders);
 	        });
 	    }
@@ -24584,14 +24586,14 @@ function requireLib () {
 	     * Be aware that not found returns a null.  Other errors (4xx, 5xx) reject the promise
 	     */
 	    getJson(requestUrl, additionalHeaders = {}) {
-	        return __awaiter(this, undefined, undefined, function* () {
+	        return __awaiter(this, void 0, void 0, function* () {
 	            additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
 	            const res = yield this.get(requestUrl, additionalHeaders);
 	            return this._processResponse(res, this.requestOptions);
 	        });
 	    }
 	    postJson(requestUrl, obj, additionalHeaders = {}) {
-	        return __awaiter(this, undefined, undefined, function* () {
+	        return __awaiter(this, void 0, void 0, function* () {
 	            const data = JSON.stringify(obj, null, 2);
 	            additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
 	            additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.ContentType, MediaTypes.ApplicationJson);
@@ -24600,7 +24602,7 @@ function requireLib () {
 	        });
 	    }
 	    putJson(requestUrl, obj, additionalHeaders = {}) {
-	        return __awaiter(this, undefined, undefined, function* () {
+	        return __awaiter(this, void 0, void 0, function* () {
 	            const data = JSON.stringify(obj, null, 2);
 	            additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
 	            additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.ContentType, MediaTypes.ApplicationJson);
@@ -24609,7 +24611,7 @@ function requireLib () {
 	        });
 	    }
 	    patchJson(requestUrl, obj, additionalHeaders = {}) {
-	        return __awaiter(this, undefined, undefined, function* () {
+	        return __awaiter(this, void 0, void 0, function* () {
 	            const data = JSON.stringify(obj, null, 2);
 	            additionalHeaders[Headers.Accept] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.Accept, MediaTypes.ApplicationJson);
 	            additionalHeaders[Headers.ContentType] = this._getExistingOrDefaultHeader(additionalHeaders, Headers.ContentType, MediaTypes.ApplicationJson);
@@ -24623,7 +24625,7 @@ function requireLib () {
 	     * Prefer get, del, post and patch
 	     */
 	    request(verb, requestUrl, data, headers) {
-	        return __awaiter(this, undefined, undefined, function* () {
+	        return __awaiter(this, void 0, void 0, function* () {
 	            if (this._disposed) {
 	                throw new Error('Client has already been disposed.');
 	            }
@@ -24719,7 +24721,7 @@ function requireLib () {
 	     * @param data
 	     */
 	    requestRaw(info, data) {
-	        return __awaiter(this, undefined, undefined, function* () {
+	        return __awaiter(this, void 0, void 0, function* () {
 	            return new Promise((resolve, reject) => {
 	                function callbackForResult(err, res) {
 	                    if (err) {
@@ -24928,15 +24930,15 @@ function requireLib () {
 	        return proxyAgent;
 	    }
 	    _performExponentialBackoff(retryNumber) {
-	        return __awaiter(this, undefined, undefined, function* () {
+	        return __awaiter(this, void 0, void 0, function* () {
 	            retryNumber = Math.min(ExponentialBackoffCeiling, retryNumber);
 	            const ms = ExponentialBackoffTimeSlice * Math.pow(2, retryNumber);
 	            return new Promise(resolve => setTimeout(() => resolve(), ms));
 	        });
 	    }
 	    _processResponse(res, options) {
-	        return __awaiter(this, undefined, undefined, function* () {
-	            return new Promise((resolve, reject) => __awaiter(this, undefined, undefined, function* () {
+	        return __awaiter(this, void 0, void 0, function* () {
+	            return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
 	                const statusCode = res.message.statusCode || 0;
 	                const response = {
 	                    statusCode,
@@ -25023,7 +25025,7 @@ function requireAuth () {
 	    });
 	};
 	Object.defineProperty(auth, "__esModule", { value: true });
-	auth.PersonalAccessTokenCredentialHandler = auth.BearerCredentialHandler = auth.BasicCredentialHandler = undefined;
+	auth.PersonalAccessTokenCredentialHandler = auth.BearerCredentialHandler = auth.BasicCredentialHandler = void 0;
 	class BasicCredentialHandler {
 	    constructor(username, password) {
 	        this.username = username;
@@ -25040,7 +25042,7 @@ function requireAuth () {
 	        return false;
 	    }
 	    handleAuthentication() {
-	        return __awaiter(this, undefined, undefined, function* () {
+	        return __awaiter(this, void 0, void 0, function* () {
 	            throw new Error('not implemented');
 	        });
 	    }
@@ -25063,7 +25065,7 @@ function requireAuth () {
 	        return false;
 	    }
 	    handleAuthentication() {
-	        return __awaiter(this, undefined, undefined, function* () {
+	        return __awaiter(this, void 0, void 0, function* () {
 	            throw new Error('not implemented');
 	        });
 	    }
@@ -25086,7 +25088,7 @@ function requireAuth () {
 	        return false;
 	    }
 	    handleAuthentication() {
-	        return __awaiter(this, undefined, undefined, function* () {
+	        return __awaiter(this, void 0, void 0, function* () {
 	            throw new Error('not implemented');
 	        });
 	    }
@@ -25111,7 +25113,7 @@ function requireOidcUtils () {
 	    });
 	};
 	Object.defineProperty(oidcUtils, "__esModule", { value: true });
-	oidcUtils.OidcClient = undefined;
+	oidcUtils.OidcClient = void 0;
 	const http_client_1 = requireLib();
 	const auth_1 = requireAuth();
 	const core_1 = requireCore();
@@ -25139,7 +25141,7 @@ function requireOidcUtils () {
 	    }
 	    static getCall(id_token_url) {
 	        var _a;
-	        return __awaiter(this, undefined, undefined, function* () {
+	        return __awaiter(this, void 0, void 0, function* () {
 	            const httpclient = OidcClient.createHttpClient();
 	            const res = yield httpclient
 	                .getJson(id_token_url)
@@ -25148,7 +25150,7 @@ function requireOidcUtils () {
         Error Code : ${error.statusCode}\n 
         Error Message: ${error.message}`);
 	            });
-	            const id_token = (_a = res.result) === null || _a === undefined ? undefined : _a.value;
+	            const id_token = (_a = res.result) === null || _a === void 0 ? void 0 : _a.value;
 	            if (!id_token) {
 	                throw new Error('Response json body do not have ID Token field');
 	            }
@@ -25156,7 +25158,7 @@ function requireOidcUtils () {
 	        });
 	    }
 	    static getIDToken(audience) {
-	        return __awaiter(this, undefined, undefined, function* () {
+	        return __awaiter(this, void 0, void 0, function* () {
 	            try {
 	                // New ID Token is requested from action service
 	                let id_token_url = OidcClient.getIDTokenUrl();
@@ -25198,7 +25200,7 @@ function requireSummary () {
 		    });
 		};
 		Object.defineProperty(exports, "__esModule", { value: true });
-		exports.summary = exports.markdownSummary = exports.SUMMARY_DOCS_URL = exports.SUMMARY_ENV_VAR = undefined;
+		exports.summary = exports.markdownSummary = exports.SUMMARY_DOCS_URL = exports.SUMMARY_ENV_VAR = void 0;
 		const os_1 = require$$0;
 		const fs_1 = require$$1;
 		const { access, appendFile, writeFile } = fs_1.promises;
@@ -25215,7 +25217,7 @@ function requireSummary () {
 		     * @returns step summary file path
 		     */
 		    filePath() {
-		        return __awaiter(this, undefined, undefined, function* () {
+		        return __awaiter(this, void 0, void 0, function* () {
 		            if (this._filePath) {
 		                return this._filePath;
 		            }
@@ -25259,8 +25261,8 @@ function requireSummary () {
 		     * @returns {Promise<Summary>} summary instance
 		     */
 		    write(options) {
-		        return __awaiter(this, undefined, undefined, function* () {
-		            const overwrite = !!(options === null || options === undefined ? undefined : options.overwrite);
+		        return __awaiter(this, void 0, void 0, function* () {
+		            const overwrite = !!(options === null || options === void 0 ? void 0 : options.overwrite);
 		            const filePath = yield this.filePath();
 		            const writeFunc = overwrite ? writeFile : appendFile;
 		            yield writeFunc(filePath, this._buffer, { encoding: 'utf8' });
@@ -25273,7 +25275,7 @@ function requireSummary () {
 		     * @returns {Summary} summary instance
 		     */
 		    clear() {
-		        return __awaiter(this, undefined, undefined, function* () {
+		        return __awaiter(this, void 0, void 0, function* () {
 		            return this.emptyBuffer().write({ overwrite: true });
 		        });
 		    }
@@ -25505,7 +25507,7 @@ function requirePathUtils () {
 	    return result;
 	};
 	Object.defineProperty(pathUtils, "__esModule", { value: true });
-	pathUtils.toPlatformPath = pathUtils.toWin32Path = pathUtils.toPosixPath = undefined;
+	pathUtils.toPlatformPath = pathUtils.toWin32Path = pathUtils.toPosixPath = void 0;
 	const path = __importStar(require$$1$5);
 	/**
 	 * toPosixPath converts the given path to the posix form. On Windows, \\ will be
@@ -25591,7 +25593,7 @@ function requireIoUtil () {
 		};
 		var _a;
 		Object.defineProperty(exports, "__esModule", { value: true });
-		exports.getCmdPath = exports.tryGetExecutablePath = exports.isRooted = exports.isDirectory = exports.exists = exports.READONLY = exports.UV_FS_O_EXLOCK = exports.IS_WINDOWS = exports.unlink = exports.symlink = exports.stat = exports.rmdir = exports.rm = exports.rename = exports.readlink = exports.readdir = exports.open = exports.mkdir = exports.lstat = exports.copyFile = exports.chmod = undefined;
+		exports.getCmdPath = exports.tryGetExecutablePath = exports.isRooted = exports.isDirectory = exports.exists = exports.READONLY = exports.UV_FS_O_EXLOCK = exports.IS_WINDOWS = exports.unlink = exports.symlink = exports.stat = exports.rmdir = exports.rm = exports.rename = exports.readlink = exports.readdir = exports.open = exports.mkdir = exports.lstat = exports.copyFile = exports.chmod = void 0;
 		const fs = __importStar(require$$1);
 		const path = __importStar(require$$1$5);
 		_a = fs.promises
@@ -25603,7 +25605,7 @@ function requireIoUtil () {
 		exports.UV_FS_O_EXLOCK = 0x10000000;
 		exports.READONLY = fs.constants.O_RDONLY;
 		function exists(fsPath) {
-		    return __awaiter(this, undefined, undefined, function* () {
+		    return __awaiter(this, void 0, void 0, function* () {
 		        try {
 		            yield exports.stat(fsPath);
 		        }
@@ -25618,7 +25620,7 @@ function requireIoUtil () {
 		}
 		exports.exists = exists;
 		function isDirectory(fsPath, useStat = false) {
-		    return __awaiter(this, undefined, undefined, function* () {
+		    return __awaiter(this, void 0, void 0, function* () {
 		        const stats = useStat ? yield exports.stat(fsPath) : yield exports.lstat(fsPath);
 		        return stats.isDirectory();
 		    });
@@ -25647,7 +25649,7 @@ function requireIoUtil () {
 		 * @return if file exists and is executable, returns the file path. otherwise empty string.
 		 */
 		function tryGetExecutablePath(filePath, extensions) {
-		    return __awaiter(this, undefined, undefined, function* () {
+		    return __awaiter(this, void 0, void 0, function* () {
 		        let stats = undefined;
 		        try {
 		            // test file exists
@@ -25739,7 +25741,7 @@ function requireIoUtil () {
 		// Get the path of cmd.exe in windows
 		function getCmdPath() {
 		    var _a;
-		    return (_a = process.env['COMSPEC']) !== null && _a !== undefined ? _a : `cmd.exe`;
+		    return (_a = process.env['COMSPEC']) !== null && _a !== void 0 ? _a : `cmd.exe`;
 		}
 		exports.getCmdPath = getCmdPath;
 		
@@ -25781,7 +25783,7 @@ function requireIo () {
 	    });
 	};
 	Object.defineProperty(io, "__esModule", { value: true });
-	io.findInPath = io.which = io.mkdirP = io.rmRF = io.mv = io.cp = undefined;
+	io.findInPath = io.which = io.mkdirP = io.rmRF = io.mv = io.cp = void 0;
 	const assert_1 = require$$0$3;
 	const path = __importStar(require$$1$5);
 	const ioUtil = __importStar(requireIoUtil());
@@ -25794,7 +25796,7 @@ function requireIo () {
 	 * @param     options   optional. See CopyOptions.
 	 */
 	function cp(source, dest, options = {}) {
-	    return __awaiter(this, undefined, undefined, function* () {
+	    return __awaiter(this, void 0, void 0, function* () {
 	        const { force, recursive, copySourceDirectory } = readCopyOptions(options);
 	        const destStat = (yield ioUtil.exists(dest)) ? yield ioUtil.stat(dest) : null;
 	        // Dest is an existing file, but not forcing
@@ -25835,7 +25837,7 @@ function requireIo () {
 	 * @param     options   optional. See MoveOptions.
 	 */
 	function mv(source, dest, options = {}) {
-	    return __awaiter(this, undefined, undefined, function* () {
+	    return __awaiter(this, void 0, void 0, function* () {
 	        if (yield ioUtil.exists(dest)) {
 	            let destExists = true;
 	            if (yield ioUtil.isDirectory(dest)) {
@@ -25863,7 +25865,7 @@ function requireIo () {
 	 * @param inputPath path to remove
 	 */
 	function rmRF(inputPath) {
-	    return __awaiter(this, undefined, undefined, function* () {
+	    return __awaiter(this, void 0, void 0, function* () {
 	        if (ioUtil.IS_WINDOWS) {
 	            // Check for invalid characters
 	            // https://docs.microsoft.com/en-us/windows/win32/fileio/naming-a-file
@@ -25894,7 +25896,7 @@ function requireIo () {
 	 * @returns Promise<void>
 	 */
 	function mkdirP(fsPath) {
-	    return __awaiter(this, undefined, undefined, function* () {
+	    return __awaiter(this, void 0, void 0, function* () {
 	        assert_1.ok(fsPath, 'a path argument must be provided');
 	        yield ioUtil.mkdir(fsPath, { recursive: true });
 	    });
@@ -25909,7 +25911,7 @@ function requireIo () {
 	 * @returns   Promise<string>   path to tool
 	 */
 	function which(tool, check) {
-	    return __awaiter(this, undefined, undefined, function* () {
+	    return __awaiter(this, void 0, void 0, function* () {
 	        if (!tool) {
 	            throw new Error("parameter 'tool' is required");
 	        }
@@ -25940,7 +25942,7 @@ function requireIo () {
 	 * @returns   Promise<string[]>  the paths of the tool
 	 */
 	function findInPath(tool) {
-	    return __awaiter(this, undefined, undefined, function* () {
+	    return __awaiter(this, void 0, void 0, function* () {
 	        if (!tool) {
 	            throw new Error("parameter 'tool' is required");
 	        }
@@ -26000,7 +26002,7 @@ function requireIo () {
 	    return { force, recursive, copySourceDirectory };
 	}
 	function cpDirRecursive(sourceDir, destDir, currentDepth, force) {
-	    return __awaiter(this, undefined, undefined, function* () {
+	    return __awaiter(this, void 0, void 0, function* () {
 	        // Ensure there is not a run away recursive copy
 	        if (currentDepth >= 255)
 	            return;
@@ -26025,7 +26027,7 @@ function requireIo () {
 	}
 	// Buffered file copy
 	function copyFile(srcFile, destFile, force) {
-	    return __awaiter(this, undefined, undefined, function* () {
+	    return __awaiter(this, void 0, void 0, function* () {
 	        if ((yield ioUtil.lstat(srcFile)).isSymbolicLink()) {
 	            // unlink/re-link it
 	            try {
@@ -26087,7 +26089,7 @@ function requireToolrunner () {
 	    });
 	};
 	Object.defineProperty(toolrunner, "__esModule", { value: true });
-	toolrunner.argStringToArray = toolrunner.ToolRunner = undefined;
+	toolrunner.argStringToArray = toolrunner.ToolRunner = void 0;
 	const os = __importStar(require$$0);
 	const events = __importStar(require$$4);
 	const child = __importStar(require$$2$2);
@@ -26440,7 +26442,7 @@ function requireToolrunner () {
 	     * @returns   number
 	     */
 	    exec() {
-	        return __awaiter(this, undefined, undefined, function* () {
+	        return __awaiter(this, void 0, void 0, function* () {
 	            // root the tool path if it is unrooted and contains relative pathing
 	            if (!ioUtil.isRooted(this.toolPath) &&
 	                (this.toolPath.includes('/') ||
@@ -26451,7 +26453,7 @@ function requireToolrunner () {
 	            // if the tool is only a file name, then resolve it from the PATH
 	            // otherwise verify it exists (add extension on Windows if necessary)
 	            this.toolPath = yield io.which(this.toolPath, true);
-	            return new Promise((resolve, reject) => __awaiter(this, undefined, undefined, function* () {
+	            return new Promise((resolve, reject) => __awaiter(this, void 0, void 0, function* () {
 	                this._debug(`exec tool: ${this.toolPath}`);
 	                this._debug('arguments:');
 	                for (const arg of this.args) {
@@ -26712,7 +26714,7 @@ function requireExec () {
 	    });
 	};
 	Object.defineProperty(exec, "__esModule", { value: true });
-	exec.getExecOutput = exec.exec = undefined;
+	exec.getExecOutput = exec.exec = void 0;
 	const string_decoder_1 = require$$6;
 	const tr = __importStar(requireToolrunner());
 	/**
@@ -26726,7 +26728,7 @@ function requireExec () {
 	 * @returns   Promise<number>    exit code
 	 */
 	function exec$1(commandLine, args, options) {
-	    return __awaiter(this, undefined, undefined, function* () {
+	    return __awaiter(this, void 0, void 0, function* () {
 	        const commandArgs = tr.argStringToArray(commandLine);
 	        if (commandArgs.length === 0) {
 	            throw new Error(`Parameter 'commandLine' cannot be null or empty.`);
@@ -26751,14 +26753,14 @@ function requireExec () {
 	 */
 	function getExecOutput(commandLine, args, options) {
 	    var _a, _b;
-	    return __awaiter(this, undefined, undefined, function* () {
+	    return __awaiter(this, void 0, void 0, function* () {
 	        let stdout = '';
 	        let stderr = '';
 	        //Using string decoder covers the case where a mult-byte character is split
 	        const stdoutDecoder = new string_decoder_1.StringDecoder('utf8');
 	        const stderrDecoder = new string_decoder_1.StringDecoder('utf8');
-	        const originalStdoutListener = (_a = options === null || options === undefined ? undefined : options.listeners) === null || _a === undefined ? undefined : _a.stdout;
-	        const originalStdErrListener = (_b = options === null || options === undefined ? undefined : options.listeners) === null || _b === undefined ? undefined : _b.stderr;
+	        const originalStdoutListener = (_a = options === null || options === void 0 ? void 0 : options.listeners) === null || _a === void 0 ? void 0 : _a.stdout;
+	        const originalStdErrListener = (_b = options === null || options === void 0 ? void 0 : options.listeners) === null || _b === void 0 ? void 0 : _b.stderr;
 	        const stdErrListener = (data) => {
 	            stderr += stderrDecoder.write(data);
 	            if (originalStdErrListener) {
@@ -26771,7 +26773,7 @@ function requireExec () {
 	                originalStdoutListener(data);
 	            }
 	        };
-	        const listeners = Object.assign(Object.assign({}, options === null || options === undefined ? undefined : options.listeners), { stdout: stdOutListener, stderr: stdErrListener });
+	        const listeners = Object.assign(Object.assign({}, options === null || options === void 0 ? void 0 : options.listeners), { stdout: stdOutListener, stderr: stdErrListener });
 	        const exitCode = yield exec$1(commandLine, args, Object.assign(Object.assign({}, options), { listeners }));
 	        //flush any remaining characters
 	        stdout += stdoutDecoder.end();
@@ -26830,10 +26832,10 @@ function requirePlatform () {
 		    return (mod && mod.__esModule) ? mod : { "default": mod };
 		};
 		Object.defineProperty(exports, "__esModule", { value: true });
-		exports.getDetails = exports.isLinux = exports.isMacOS = exports.isWindows = exports.arch = exports.platform = undefined;
+		exports.getDetails = exports.isLinux = exports.isMacOS = exports.isWindows = exports.arch = exports.platform = void 0;
 		const os_1 = __importDefault(require$$0);
 		const exec = __importStar(requireExec());
-		const getWindowsInfo = () => __awaiter(undefined, undefined, undefined, function* () {
+		const getWindowsInfo = () => __awaiter(void 0, void 0, void 0, function* () {
 		    const { stdout: version } = yield exec.getExecOutput('powershell -command "(Get-CimInstance -ClassName Win32_OperatingSystem).Version"', undefined, {
 		        silent: true
 		    });
@@ -26845,19 +26847,19 @@ function requirePlatform () {
 		        version: version.trim()
 		    };
 		});
-		const getMacOsInfo = () => __awaiter(undefined, undefined, undefined, function* () {
+		const getMacOsInfo = () => __awaiter(void 0, void 0, void 0, function* () {
 		    var _a, _b, _c, _d;
 		    const { stdout } = yield exec.getExecOutput('sw_vers', undefined, {
 		        silent: true
 		    });
-		    const version = (_b = (_a = stdout.match(/ProductVersion:\s*(.+)/)) === null || _a === undefined ? undefined : _a[1]) !== null && _b !== undefined ? _b : '';
-		    const name = (_d = (_c = stdout.match(/ProductName:\s*(.+)/)) === null || _c === undefined ? undefined : _c[1]) !== null && _d !== undefined ? _d : '';
+		    const version = (_b = (_a = stdout.match(/ProductVersion:\s*(.+)/)) === null || _a === void 0 ? void 0 : _a[1]) !== null && _b !== void 0 ? _b : '';
+		    const name = (_d = (_c = stdout.match(/ProductName:\s*(.+)/)) === null || _c === void 0 ? void 0 : _c[1]) !== null && _d !== void 0 ? _d : '';
 		    return {
 		        name,
 		        version
 		    };
 		});
-		const getLinuxInfo = () => __awaiter(undefined, undefined, undefined, function* () {
+		const getLinuxInfo = () => __awaiter(void 0, void 0, void 0, function* () {
 		    const { stdout } = yield exec.getExecOutput('lsb_release', ['-i', '-r', '-s'], {
 		        silent: true
 		    });
@@ -26873,7 +26875,7 @@ function requirePlatform () {
 		exports.isMacOS = exports.platform === 'darwin';
 		exports.isLinux = exports.platform === 'linux';
 		function getDetails() {
-		    return __awaiter(this, undefined, undefined, function* () {
+		    return __awaiter(this, void 0, void 0, function* () {
 		        return Object.assign(Object.assign({}, (yield (exports.isWindows
 		            ? getWindowsInfo()
 		            : exports.isMacOS
@@ -26930,7 +26932,7 @@ function requireCore () {
 		    });
 		};
 		Object.defineProperty(exports, "__esModule", { value: true });
-		exports.platform = exports.toPlatformPath = exports.toWin32Path = exports.toPosixPath = exports.markdownSummary = exports.summary = exports.getIDToken = exports.getState = exports.saveState = exports.group = exports.endGroup = exports.startGroup = exports.info = exports.notice = exports.warning = exports.error = exports.debug = exports.isDebug = exports.setFailed = exports.setCommandEcho = exports.setOutput = exports.getBooleanInput = exports.getMultilineInput = exports.getInput = exports.addPath = exports.setSecret = exports.exportVariable = exports.ExitCode = undefined;
+		exports.platform = exports.toPlatformPath = exports.toWin32Path = exports.toPosixPath = exports.markdownSummary = exports.summary = exports.getIDToken = exports.getState = exports.saveState = exports.group = exports.endGroup = exports.startGroup = exports.info = exports.notice = exports.warning = exports.error = exports.debug = exports.isDebug = exports.setFailed = exports.setCommandEcho = exports.setOutput = exports.getBooleanInput = exports.getMultilineInput = exports.getInput = exports.addPath = exports.setSecret = exports.exportVariable = exports.ExitCode = void 0;
 		const command_1 = requireCommand();
 		const file_command_1 = requireFileCommand();
 		const utils_1 = requireUtils$1();
@@ -27171,7 +27173,7 @@ function requireCore () {
 		 * @param fn The function to wrap in the group
 		 */
 		function group(name, fn) {
-		    return __awaiter(this, undefined, undefined, function* () {
+		    return __awaiter(this, void 0, void 0, function* () {
 		        startGroup(name);
 		        let result;
 		        try {
@@ -27213,7 +27215,7 @@ function requireCore () {
 		}
 		exports.getState = getState;
 		function getIDToken(aud) {
-		    return __awaiter(this, undefined, undefined, function* () {
+		    return __awaiter(this, void 0, void 0, function* () {
 		        return yield oidc_utils_1.OidcClient.getIDToken(aud);
 		    });
 		}
@@ -27247,19 +27249,1561 @@ function requireCore () {
 var coreExports = requireCore();
 
 /**
- * Waits for a number of milliseconds.
- *
- * @param milliseconds The number of milliseconds to wait.
- * @returns Resolves with 'done!' after the wait is over.
+ * Contains the list of OpenAPI data types
+ * as defined by https://swagger.io/docs/specification/data-models/data-types/
+ * @public
  */
-async function wait(milliseconds) {
-    return new Promise((resolve) => {
-        if (isNaN(milliseconds))
-            throw new Error('milliseconds is not a number');
-        setTimeout(() => resolve('done!'), milliseconds);
-    });
+var SchemaType;
+(function (SchemaType) {
+    /** String type. */
+    SchemaType["STRING"] = "string";
+    /** Number type. */
+    SchemaType["NUMBER"] = "number";
+    /** Integer type. */
+    SchemaType["INTEGER"] = "integer";
+    /** Boolean type. */
+    SchemaType["BOOLEAN"] = "boolean";
+    /** Array type. */
+    SchemaType["ARRAY"] = "array";
+    /** Object type. */
+    SchemaType["OBJECT"] = "object";
+})(SchemaType || (SchemaType = {}));
+
+/**
+ * @license
+ * Copyright 2024 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/**
+ * @public
+ */
+var ExecutableCodeLanguage;
+(function (ExecutableCodeLanguage) {
+    ExecutableCodeLanguage["LANGUAGE_UNSPECIFIED"] = "language_unspecified";
+    ExecutableCodeLanguage["PYTHON"] = "python";
+})(ExecutableCodeLanguage || (ExecutableCodeLanguage = {}));
+/**
+ * Possible outcomes of code execution.
+ * @public
+ */
+var Outcome;
+(function (Outcome) {
+    /**
+     * Unspecified status. This value should not be used.
+     */
+    Outcome["OUTCOME_UNSPECIFIED"] = "outcome_unspecified";
+    /**
+     * Code execution completed successfully.
+     */
+    Outcome["OUTCOME_OK"] = "outcome_ok";
+    /**
+     * Code execution finished but with a failure. `stderr` should contain the
+     * reason.
+     */
+    Outcome["OUTCOME_FAILED"] = "outcome_failed";
+    /**
+     * Code execution ran for too long, and was cancelled. There may or may not
+     * be a partial output present.
+     */
+    Outcome["OUTCOME_DEADLINE_EXCEEDED"] = "outcome_deadline_exceeded";
+})(Outcome || (Outcome = {}));
+
+/**
+ * @license
+ * Copyright 2024 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/**
+ * Possible roles.
+ * @public
+ */
+const POSSIBLE_ROLES = ["user", "model", "function", "system"];
+/**
+ * Harm categories that would cause prompts or candidates to be blocked.
+ * @public
+ */
+var HarmCategory;
+(function (HarmCategory) {
+    HarmCategory["HARM_CATEGORY_UNSPECIFIED"] = "HARM_CATEGORY_UNSPECIFIED";
+    HarmCategory["HARM_CATEGORY_HATE_SPEECH"] = "HARM_CATEGORY_HATE_SPEECH";
+    HarmCategory["HARM_CATEGORY_SEXUALLY_EXPLICIT"] = "HARM_CATEGORY_SEXUALLY_EXPLICIT";
+    HarmCategory["HARM_CATEGORY_HARASSMENT"] = "HARM_CATEGORY_HARASSMENT";
+    HarmCategory["HARM_CATEGORY_DANGEROUS_CONTENT"] = "HARM_CATEGORY_DANGEROUS_CONTENT";
+})(HarmCategory || (HarmCategory = {}));
+/**
+ * Threshold above which a prompt or candidate will be blocked.
+ * @public
+ */
+var HarmBlockThreshold;
+(function (HarmBlockThreshold) {
+    // Threshold is unspecified.
+    HarmBlockThreshold["HARM_BLOCK_THRESHOLD_UNSPECIFIED"] = "HARM_BLOCK_THRESHOLD_UNSPECIFIED";
+    // Content with NEGLIGIBLE will be allowed.
+    HarmBlockThreshold["BLOCK_LOW_AND_ABOVE"] = "BLOCK_LOW_AND_ABOVE";
+    // Content with NEGLIGIBLE and LOW will be allowed.
+    HarmBlockThreshold["BLOCK_MEDIUM_AND_ABOVE"] = "BLOCK_MEDIUM_AND_ABOVE";
+    // Content with NEGLIGIBLE, LOW, and MEDIUM will be allowed.
+    HarmBlockThreshold["BLOCK_ONLY_HIGH"] = "BLOCK_ONLY_HIGH";
+    // All content will be allowed.
+    HarmBlockThreshold["BLOCK_NONE"] = "BLOCK_NONE";
+})(HarmBlockThreshold || (HarmBlockThreshold = {}));
+/**
+ * Probability that a prompt or candidate matches a harm category.
+ * @public
+ */
+var HarmProbability;
+(function (HarmProbability) {
+    // Probability is unspecified.
+    HarmProbability["HARM_PROBABILITY_UNSPECIFIED"] = "HARM_PROBABILITY_UNSPECIFIED";
+    // Content has a negligible chance of being unsafe.
+    HarmProbability["NEGLIGIBLE"] = "NEGLIGIBLE";
+    // Content has a low chance of being unsafe.
+    HarmProbability["LOW"] = "LOW";
+    // Content has a medium chance of being unsafe.
+    HarmProbability["MEDIUM"] = "MEDIUM";
+    // Content has a high chance of being unsafe.
+    HarmProbability["HIGH"] = "HIGH";
+})(HarmProbability || (HarmProbability = {}));
+/**
+ * Reason that a prompt was blocked.
+ * @public
+ */
+var BlockReason;
+(function (BlockReason) {
+    // A blocked reason was not specified.
+    BlockReason["BLOCKED_REASON_UNSPECIFIED"] = "BLOCKED_REASON_UNSPECIFIED";
+    // Content was blocked by safety settings.
+    BlockReason["SAFETY"] = "SAFETY";
+    // Content was blocked, but the reason is uncategorized.
+    BlockReason["OTHER"] = "OTHER";
+})(BlockReason || (BlockReason = {}));
+/**
+ * Reason that a candidate finished.
+ * @public
+ */
+var FinishReason;
+(function (FinishReason) {
+    // Default value. This value is unused.
+    FinishReason["FINISH_REASON_UNSPECIFIED"] = "FINISH_REASON_UNSPECIFIED";
+    // Natural stop point of the model or provided stop sequence.
+    FinishReason["STOP"] = "STOP";
+    // The maximum number of tokens as specified in the request was reached.
+    FinishReason["MAX_TOKENS"] = "MAX_TOKENS";
+    // The candidate content was flagged for safety reasons.
+    FinishReason["SAFETY"] = "SAFETY";
+    // The candidate content was flagged for recitation reasons.
+    FinishReason["RECITATION"] = "RECITATION";
+    // The candidate content was flagged for using an unsupported language.
+    FinishReason["LANGUAGE"] = "LANGUAGE";
+    // Unknown reason.
+    FinishReason["OTHER"] = "OTHER";
+})(FinishReason || (FinishReason = {}));
+/**
+ * Task type for embedding content.
+ * @public
+ */
+var TaskType;
+(function (TaskType) {
+    TaskType["TASK_TYPE_UNSPECIFIED"] = "TASK_TYPE_UNSPECIFIED";
+    TaskType["RETRIEVAL_QUERY"] = "RETRIEVAL_QUERY";
+    TaskType["RETRIEVAL_DOCUMENT"] = "RETRIEVAL_DOCUMENT";
+    TaskType["SEMANTIC_SIMILARITY"] = "SEMANTIC_SIMILARITY";
+    TaskType["CLASSIFICATION"] = "CLASSIFICATION";
+    TaskType["CLUSTERING"] = "CLUSTERING";
+})(TaskType || (TaskType = {}));
+/**
+ * @public
+ */
+var FunctionCallingMode;
+(function (FunctionCallingMode) {
+    // Unspecified function calling mode. This value should not be used.
+    FunctionCallingMode["MODE_UNSPECIFIED"] = "MODE_UNSPECIFIED";
+    // Default model behavior, model decides to predict either a function call
+    // or a natural language repspose.
+    FunctionCallingMode["AUTO"] = "AUTO";
+    // Model is constrained to always predicting a function call only.
+    // If "allowed_function_names" are set, the predicted function call will be
+    // limited to any one of "allowed_function_names", else the predicted
+    // function call will be any one of the provided "function_declarations".
+    FunctionCallingMode["ANY"] = "ANY";
+    // Model will not predict any function call. Model behavior is same as when
+    // not passing any function declarations.
+    FunctionCallingMode["NONE"] = "NONE";
+})(FunctionCallingMode || (FunctionCallingMode = {}));
+/**
+ * The mode of the predictor to be used in dynamic retrieval.
+ * @public
+ */
+var DynamicRetrievalMode;
+(function (DynamicRetrievalMode) {
+    // Unspecified function calling mode. This value should not be used.
+    DynamicRetrievalMode["MODE_UNSPECIFIED"] = "MODE_UNSPECIFIED";
+    // Run retrieval only when system decides it is necessary.
+    DynamicRetrievalMode["MODE_DYNAMIC"] = "MODE_DYNAMIC";
+})(DynamicRetrievalMode || (DynamicRetrievalMode = {}));
+
+/**
+ * @license
+ * Copyright 2024 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/**
+ * Basic error type for this SDK.
+ * @public
+ */
+class GoogleGenerativeAIError extends Error {
+    constructor(message) {
+        super(`[GoogleGenerativeAI Error]: ${message}`);
+    }
+}
+/**
+ * Errors in the contents of a response from the model. This includes parsing
+ * errors, or responses including a safety block reason.
+ * @public
+ */
+class GoogleGenerativeAIResponseError extends GoogleGenerativeAIError {
+    constructor(message, response) {
+        super(message);
+        this.response = response;
+    }
+}
+/**
+ * Error class covering HTTP errors when calling the server. Includes HTTP
+ * status, statusText, and optional details, if provided in the server response.
+ * @public
+ */
+class GoogleGenerativeAIFetchError extends GoogleGenerativeAIError {
+    constructor(message, status, statusText, errorDetails) {
+        super(message);
+        this.status = status;
+        this.statusText = statusText;
+        this.errorDetails = errorDetails;
+    }
+}
+/**
+ * Errors in the contents of a request originating from user input.
+ * @public
+ */
+class GoogleGenerativeAIRequestInputError extends GoogleGenerativeAIError {
 }
 
+/**
+ * @license
+ * Copyright 2024 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+const DEFAULT_BASE_URL = "https://generativelanguage.googleapis.com";
+const DEFAULT_API_VERSION = "v1beta";
+/**
+ * We can't `require` package.json if this runs on web. We will use rollup to
+ * swap in the version number here at build time.
+ */
+const PACKAGE_VERSION = "0.21.0";
+const PACKAGE_LOG_HEADER = "genai-js";
+var Task;
+(function (Task) {
+    Task["GENERATE_CONTENT"] = "generateContent";
+    Task["STREAM_GENERATE_CONTENT"] = "streamGenerateContent";
+    Task["COUNT_TOKENS"] = "countTokens";
+    Task["EMBED_CONTENT"] = "embedContent";
+    Task["BATCH_EMBED_CONTENTS"] = "batchEmbedContents";
+})(Task || (Task = {}));
+class RequestUrl {
+    constructor(model, task, apiKey, stream, requestOptions) {
+        this.model = model;
+        this.task = task;
+        this.apiKey = apiKey;
+        this.stream = stream;
+        this.requestOptions = requestOptions;
+    }
+    toString() {
+        var _a, _b;
+        const apiVersion = ((_a = this.requestOptions) === null || _a === void 0 ? void 0 : _a.apiVersion) || DEFAULT_API_VERSION;
+        const baseUrl = ((_b = this.requestOptions) === null || _b === void 0 ? void 0 : _b.baseUrl) || DEFAULT_BASE_URL;
+        let url = `${baseUrl}/${apiVersion}/${this.model}:${this.task}`;
+        if (this.stream) {
+            url += "?alt=sse";
+        }
+        return url;
+    }
+}
+/**
+ * Simple, but may become more complex if we add more versions to log.
+ */
+function getClientHeaders(requestOptions) {
+    const clientHeaders = [];
+    if (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.apiClient) {
+        clientHeaders.push(requestOptions.apiClient);
+    }
+    clientHeaders.push(`${PACKAGE_LOG_HEADER}/${PACKAGE_VERSION}`);
+    return clientHeaders.join(" ");
+}
+async function getHeaders(url) {
+    var _a;
+    const headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    headers.append("x-goog-api-client", getClientHeaders(url.requestOptions));
+    headers.append("x-goog-api-key", url.apiKey);
+    let customHeaders = (_a = url.requestOptions) === null || _a === void 0 ? void 0 : _a.customHeaders;
+    if (customHeaders) {
+        if (!(customHeaders instanceof Headers)) {
+            try {
+                customHeaders = new Headers(customHeaders);
+            }
+            catch (e) {
+                throw new GoogleGenerativeAIRequestInputError(`unable to convert customHeaders value ${JSON.stringify(customHeaders)} to Headers: ${e.message}`);
+            }
+        }
+        for (const [headerName, headerValue] of customHeaders.entries()) {
+            if (headerName === "x-goog-api-key") {
+                throw new GoogleGenerativeAIRequestInputError(`Cannot set reserved header name ${headerName}`);
+            }
+            else if (headerName === "x-goog-api-client") {
+                throw new GoogleGenerativeAIRequestInputError(`Header name ${headerName} can only be set using the apiClient field`);
+            }
+            headers.append(headerName, headerValue);
+        }
+    }
+    return headers;
+}
+async function constructModelRequest(model, task, apiKey, stream, body, requestOptions) {
+    const url = new RequestUrl(model, task, apiKey, stream, requestOptions);
+    return {
+        url: url.toString(),
+        fetchOptions: Object.assign(Object.assign({}, buildFetchOptions(requestOptions)), { method: "POST", headers: await getHeaders(url), body }),
+    };
+}
+async function makeModelRequest(model, task, apiKey, stream, body, requestOptions = {}, 
+// Allows this to be stubbed for tests
+fetchFn = fetch) {
+    const { url, fetchOptions } = await constructModelRequest(model, task, apiKey, stream, body, requestOptions);
+    return makeRequest(url, fetchOptions, fetchFn);
+}
+async function makeRequest(url, fetchOptions, fetchFn = fetch) {
+    let response;
+    try {
+        response = await fetchFn(url, fetchOptions);
+    }
+    catch (e) {
+        handleResponseError(e, url);
+    }
+    if (!response.ok) {
+        await handleResponseNotOk(response, url);
+    }
+    return response;
+}
+function handleResponseError(e, url) {
+    let err = e;
+    if (!(e instanceof GoogleGenerativeAIFetchError ||
+        e instanceof GoogleGenerativeAIRequestInputError)) {
+        err = new GoogleGenerativeAIError(`Error fetching from ${url.toString()}: ${e.message}`);
+        err.stack = e.stack;
+    }
+    throw err;
+}
+async function handleResponseNotOk(response, url) {
+    let message = "";
+    let errorDetails;
+    try {
+        const json = await response.json();
+        message = json.error.message;
+        if (json.error.details) {
+            message += ` ${JSON.stringify(json.error.details)}`;
+            errorDetails = json.error.details;
+        }
+    }
+    catch (e) {
+        // ignored
+    }
+    throw new GoogleGenerativeAIFetchError(`Error fetching from ${url.toString()}: [${response.status} ${response.statusText}] ${message}`, response.status, response.statusText, errorDetails);
+}
+/**
+ * Generates the request options to be passed to the fetch API.
+ * @param requestOptions - The user-defined request options.
+ * @returns The generated request options.
+ */
+function buildFetchOptions(requestOptions) {
+    const fetchOptions = {};
+    if ((requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.signal) !== undefined || (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeout) >= 0) {
+        const controller = new AbortController();
+        if ((requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.timeout) >= 0) {
+            setTimeout(() => controller.abort(), requestOptions.timeout);
+        }
+        if (requestOptions === null || requestOptions === void 0 ? void 0 : requestOptions.signal) {
+            requestOptions.signal.addEventListener("abort", () => {
+                controller.abort();
+            });
+        }
+        fetchOptions.signal = controller.signal;
+    }
+    return fetchOptions;
+}
+
+/**
+ * @license
+ * Copyright 2024 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/**
+ * Adds convenience helper methods to a response object, including stream
+ * chunks (as long as each chunk is a complete GenerateContentResponse JSON).
+ */
+function addHelpers(response) {
+    response.text = () => {
+        if (response.candidates && response.candidates.length > 0) {
+            if (response.candidates.length > 1) {
+                console.warn(`This response had ${response.candidates.length} ` +
+                    `candidates. Returning text from the first candidate only. ` +
+                    `Access response.candidates directly to use the other candidates.`);
+            }
+            if (hadBadFinishReason(response.candidates[0])) {
+                throw new GoogleGenerativeAIResponseError(`${formatBlockErrorMessage(response)}`, response);
+            }
+            return getText(response);
+        }
+        else if (response.promptFeedback) {
+            throw new GoogleGenerativeAIResponseError(`Text not available. ${formatBlockErrorMessage(response)}`, response);
+        }
+        return "";
+    };
+    /**
+     * TODO: remove at next major version
+     */
+    response.functionCall = () => {
+        if (response.candidates && response.candidates.length > 0) {
+            if (response.candidates.length > 1) {
+                console.warn(`This response had ${response.candidates.length} ` +
+                    `candidates. Returning function calls from the first candidate only. ` +
+                    `Access response.candidates directly to use the other candidates.`);
+            }
+            if (hadBadFinishReason(response.candidates[0])) {
+                throw new GoogleGenerativeAIResponseError(`${formatBlockErrorMessage(response)}`, response);
+            }
+            console.warn(`response.functionCall() is deprecated. ` +
+                `Use response.functionCalls() instead.`);
+            return getFunctionCalls(response)[0];
+        }
+        else if (response.promptFeedback) {
+            throw new GoogleGenerativeAIResponseError(`Function call not available. ${formatBlockErrorMessage(response)}`, response);
+        }
+        return undefined;
+    };
+    response.functionCalls = () => {
+        if (response.candidates && response.candidates.length > 0) {
+            if (response.candidates.length > 1) {
+                console.warn(`This response had ${response.candidates.length} ` +
+                    `candidates. Returning function calls from the first candidate only. ` +
+                    `Access response.candidates directly to use the other candidates.`);
+            }
+            if (hadBadFinishReason(response.candidates[0])) {
+                throw new GoogleGenerativeAIResponseError(`${formatBlockErrorMessage(response)}`, response);
+            }
+            return getFunctionCalls(response);
+        }
+        else if (response.promptFeedback) {
+            throw new GoogleGenerativeAIResponseError(`Function call not available. ${formatBlockErrorMessage(response)}`, response);
+        }
+        return undefined;
+    };
+    return response;
+}
+/**
+ * Returns all text found in all parts of first candidate.
+ */
+function getText(response) {
+    var _a, _b, _c, _d;
+    const textStrings = [];
+    if ((_b = (_a = response.candidates) === null || _a === void 0 ? void 0 : _a[0].content) === null || _b === void 0 ? void 0 : _b.parts) {
+        for (const part of (_d = (_c = response.candidates) === null || _c === void 0 ? void 0 : _c[0].content) === null || _d === void 0 ? void 0 : _d.parts) {
+            if (part.text) {
+                textStrings.push(part.text);
+            }
+            if (part.executableCode) {
+                textStrings.push("\n```" +
+                    part.executableCode.language +
+                    "\n" +
+                    part.executableCode.code +
+                    "\n```\n");
+            }
+            if (part.codeExecutionResult) {
+                textStrings.push("\n```\n" + part.codeExecutionResult.output + "\n```\n");
+            }
+        }
+    }
+    if (textStrings.length > 0) {
+        return textStrings.join("");
+    }
+    else {
+        return "";
+    }
+}
+/**
+ * Returns functionCall of first candidate.
+ */
+function getFunctionCalls(response) {
+    var _a, _b, _c, _d;
+    const functionCalls = [];
+    if ((_b = (_a = response.candidates) === null || _a === void 0 ? void 0 : _a[0].content) === null || _b === void 0 ? void 0 : _b.parts) {
+        for (const part of (_d = (_c = response.candidates) === null || _c === void 0 ? void 0 : _c[0].content) === null || _d === void 0 ? void 0 : _d.parts) {
+            if (part.functionCall) {
+                functionCalls.push(part.functionCall);
+            }
+        }
+    }
+    if (functionCalls.length > 0) {
+        return functionCalls;
+    }
+    else {
+        return undefined;
+    }
+}
+const badFinishReasons = [
+    FinishReason.RECITATION,
+    FinishReason.SAFETY,
+    FinishReason.LANGUAGE,
+];
+function hadBadFinishReason(candidate) {
+    return (!!candidate.finishReason &&
+        badFinishReasons.includes(candidate.finishReason));
+}
+function formatBlockErrorMessage(response) {
+    var _a, _b, _c;
+    let message = "";
+    if ((!response.candidates || response.candidates.length === 0) &&
+        response.promptFeedback) {
+        message += "Response was blocked";
+        if ((_a = response.promptFeedback) === null || _a === void 0 ? void 0 : _a.blockReason) {
+            message += ` due to ${response.promptFeedback.blockReason}`;
+        }
+        if ((_b = response.promptFeedback) === null || _b === void 0 ? void 0 : _b.blockReasonMessage) {
+            message += `: ${response.promptFeedback.blockReasonMessage}`;
+        }
+    }
+    else if ((_c = response.candidates) === null || _c === void 0 ? void 0 : _c[0]) {
+        const firstCandidate = response.candidates[0];
+        if (hadBadFinishReason(firstCandidate)) {
+            message += `Candidate was blocked due to ${firstCandidate.finishReason}`;
+            if (firstCandidate.finishMessage) {
+                message += `: ${firstCandidate.finishMessage}`;
+            }
+        }
+    }
+    return message;
+}
+
+/******************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */
+/* global Reflect, Promise, SuppressedError, Symbol */
+
+
+function __await(v) {
+    return this instanceof __await ? (this.v = v, this) : new __await(v);
+}
+
+function __asyncGenerator(thisArg, _arguments, generator) {
+    if (!Symbol.asyncIterator) throw new TypeError("Symbol.asyncIterator is not defined.");
+    var g = generator.apply(thisArg, _arguments || []), i, q = [];
+    return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function () { return this; }, i;
+    function verb(n) { if (g[n]) i[n] = function (v) { return new Promise(function (a, b) { q.push([n, v, a, b]) > 1 || resume(n, v); }); }; }
+    function resume(n, v) { try { step(g[n](v)); } catch (e) { settle(q[0][3], e); } }
+    function step(r) { r.value instanceof __await ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r); }
+    function fulfill(value) { resume("next", value); }
+    function reject(value) { resume("throw", value); }
+    function settle(f, v) { if (f(v), q.shift(), q.length) resume(q[0][0], q[0][1]); }
+}
+
+typeof SuppressedError === "function" ? SuppressedError : function (error, suppressed, message) {
+    var e = new Error(message);
+    return e.name = "SuppressedError", e.error = error, e.suppressed = suppressed, e;
+};
+
+/**
+ * @license
+ * Copyright 2024 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+const responseLineRE = /^data\: (.*)(?:\n\n|\r\r|\r\n\r\n)/;
+/**
+ * Process a response.body stream from the backend and return an
+ * iterator that provides one complete GenerateContentResponse at a time
+ * and a promise that resolves with a single aggregated
+ * GenerateContentResponse.
+ *
+ * @param response - Response from a fetch call
+ */
+function processStream(response) {
+    const inputStream = response.body.pipeThrough(new TextDecoderStream("utf8", { fatal: true }));
+    const responseStream = getResponseStream(inputStream);
+    const [stream1, stream2] = responseStream.tee();
+    return {
+        stream: generateResponseSequence(stream1),
+        response: getResponsePromise(stream2),
+    };
+}
+async function getResponsePromise(stream) {
+    const allResponses = [];
+    const reader = stream.getReader();
+    while (true) {
+        const { done, value } = await reader.read();
+        if (done) {
+            return addHelpers(aggregateResponses(allResponses));
+        }
+        allResponses.push(value);
+    }
+}
+function generateResponseSequence(stream) {
+    return __asyncGenerator(this, arguments, function* generateResponseSequence_1() {
+        const reader = stream.getReader();
+        while (true) {
+            const { value, done } = yield __await(reader.read());
+            if (done) {
+                break;
+            }
+            yield yield __await(addHelpers(value));
+        }
+    });
+}
+/**
+ * Reads a raw stream from the fetch response and join incomplete
+ * chunks, returning a new stream that provides a single complete
+ * GenerateContentResponse in each iteration.
+ */
+function getResponseStream(inputStream) {
+    const reader = inputStream.getReader();
+    const stream = new ReadableStream({
+        start(controller) {
+            let currentText = "";
+            return pump();
+            function pump() {
+                return reader.read().then(({ value, done }) => {
+                    if (done) {
+                        if (currentText.trim()) {
+                            controller.error(new GoogleGenerativeAIError("Failed to parse stream"));
+                            return;
+                        }
+                        controller.close();
+                        return;
+                    }
+                    currentText += value;
+                    let match = currentText.match(responseLineRE);
+                    let parsedResponse;
+                    while (match) {
+                        try {
+                            parsedResponse = JSON.parse(match[1]);
+                        }
+                        catch (e) {
+                            controller.error(new GoogleGenerativeAIError(`Error parsing JSON response: "${match[1]}"`));
+                            return;
+                        }
+                        controller.enqueue(parsedResponse);
+                        currentText = currentText.substring(match[0].length);
+                        match = currentText.match(responseLineRE);
+                    }
+                    return pump();
+                });
+            }
+        },
+    });
+    return stream;
+}
+/**
+ * Aggregates an array of `GenerateContentResponse`s into a single
+ * GenerateContentResponse.
+ */
+function aggregateResponses(responses) {
+    const lastResponse = responses[responses.length - 1];
+    const aggregatedResponse = {
+        promptFeedback: lastResponse === null || lastResponse === void 0 ? void 0 : lastResponse.promptFeedback,
+    };
+    for (const response of responses) {
+        if (response.candidates) {
+            for (const candidate of response.candidates) {
+                const i = candidate.index;
+                if (!aggregatedResponse.candidates) {
+                    aggregatedResponse.candidates = [];
+                }
+                if (!aggregatedResponse.candidates[i]) {
+                    aggregatedResponse.candidates[i] = {
+                        index: candidate.index,
+                    };
+                }
+                // Keep overwriting, the last one will be final
+                aggregatedResponse.candidates[i].citationMetadata =
+                    candidate.citationMetadata;
+                aggregatedResponse.candidates[i].groundingMetadata =
+                    candidate.groundingMetadata;
+                aggregatedResponse.candidates[i].finishReason = candidate.finishReason;
+                aggregatedResponse.candidates[i].finishMessage =
+                    candidate.finishMessage;
+                aggregatedResponse.candidates[i].safetyRatings =
+                    candidate.safetyRatings;
+                /**
+                 * Candidates should always have content and parts, but this handles
+                 * possible malformed responses.
+                 */
+                if (candidate.content && candidate.content.parts) {
+                    if (!aggregatedResponse.candidates[i].content) {
+                        aggregatedResponse.candidates[i].content = {
+                            role: candidate.content.role || "user",
+                            parts: [],
+                        };
+                    }
+                    const newPart = {};
+                    for (const part of candidate.content.parts) {
+                        if (part.text) {
+                            newPart.text = part.text;
+                        }
+                        if (part.functionCall) {
+                            newPart.functionCall = part.functionCall;
+                        }
+                        if (part.executableCode) {
+                            newPart.executableCode = part.executableCode;
+                        }
+                        if (part.codeExecutionResult) {
+                            newPart.codeExecutionResult = part.codeExecutionResult;
+                        }
+                        if (Object.keys(newPart).length === 0) {
+                            newPart.text = "";
+                        }
+                        aggregatedResponse.candidates[i].content.parts.push(newPart);
+                    }
+                }
+            }
+        }
+        if (response.usageMetadata) {
+            aggregatedResponse.usageMetadata = response.usageMetadata;
+        }
+    }
+    return aggregatedResponse;
+}
+
+/**
+ * @license
+ * Copyright 2024 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+async function generateContentStream(apiKey, model, params, requestOptions) {
+    const response = await makeModelRequest(model, Task.STREAM_GENERATE_CONTENT, apiKey, 
+    /* stream */ true, JSON.stringify(params), requestOptions);
+    return processStream(response);
+}
+async function generateContent(apiKey, model, params, requestOptions) {
+    const response = await makeModelRequest(model, Task.GENERATE_CONTENT, apiKey, 
+    /* stream */ false, JSON.stringify(params), requestOptions);
+    const responseJson = await response.json();
+    const enhancedResponse = addHelpers(responseJson);
+    return {
+        response: enhancedResponse,
+    };
+}
+
+/**
+ * @license
+ * Copyright 2024 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+function formatSystemInstruction(input) {
+    // null or undefined
+    if (input == null) {
+        return undefined;
+    }
+    else if (typeof input === "string") {
+        return { role: "system", parts: [{ text: input }] };
+    }
+    else if (input.text) {
+        return { role: "system", parts: [input] };
+    }
+    else if (input.parts) {
+        if (!input.role) {
+            return { role: "system", parts: input.parts };
+        }
+        else {
+            return input;
+        }
+    }
+}
+function formatNewContent(request) {
+    let newParts = [];
+    if (typeof request === "string") {
+        newParts = [{ text: request }];
+    }
+    else {
+        for (const partOrString of request) {
+            if (typeof partOrString === "string") {
+                newParts.push({ text: partOrString });
+            }
+            else {
+                newParts.push(partOrString);
+            }
+        }
+    }
+    return assignRoleToPartsAndValidateSendMessageRequest(newParts);
+}
+/**
+ * When multiple Part types (i.e. FunctionResponsePart and TextPart) are
+ * passed in a single Part array, we may need to assign different roles to each
+ * part. Currently only FunctionResponsePart requires a role other than 'user'.
+ * @private
+ * @param parts Array of parts to pass to the model
+ * @returns Array of content items
+ */
+function assignRoleToPartsAndValidateSendMessageRequest(parts) {
+    const userContent = { role: "user", parts: [] };
+    const functionContent = { role: "function", parts: [] };
+    let hasUserContent = false;
+    let hasFunctionContent = false;
+    for (const part of parts) {
+        if ("functionResponse" in part) {
+            functionContent.parts.push(part);
+            hasFunctionContent = true;
+        }
+        else {
+            userContent.parts.push(part);
+            hasUserContent = true;
+        }
+    }
+    if (hasUserContent && hasFunctionContent) {
+        throw new GoogleGenerativeAIError("Within a single message, FunctionResponse cannot be mixed with other type of part in the request for sending chat message.");
+    }
+    if (!hasUserContent && !hasFunctionContent) {
+        throw new GoogleGenerativeAIError("No content is provided for sending chat message.");
+    }
+    if (hasUserContent) {
+        return userContent;
+    }
+    return functionContent;
+}
+function formatCountTokensInput(params, modelParams) {
+    var _a;
+    let formattedGenerateContentRequest = {
+        model: modelParams === null || modelParams === void 0 ? void 0 : modelParams.model,
+        generationConfig: modelParams === null || modelParams === void 0 ? void 0 : modelParams.generationConfig,
+        safetySettings: modelParams === null || modelParams === void 0 ? void 0 : modelParams.safetySettings,
+        tools: modelParams === null || modelParams === void 0 ? void 0 : modelParams.tools,
+        toolConfig: modelParams === null || modelParams === void 0 ? void 0 : modelParams.toolConfig,
+        systemInstruction: modelParams === null || modelParams === void 0 ? void 0 : modelParams.systemInstruction,
+        cachedContent: (_a = modelParams === null || modelParams === void 0 ? void 0 : modelParams.cachedContent) === null || _a === void 0 ? void 0 : _a.name,
+        contents: [],
+    };
+    const containsGenerateContentRequest = params.generateContentRequest != null;
+    if (params.contents) {
+        if (containsGenerateContentRequest) {
+            throw new GoogleGenerativeAIRequestInputError("CountTokensRequest must have one of contents or generateContentRequest, not both.");
+        }
+        formattedGenerateContentRequest.contents = params.contents;
+    }
+    else if (containsGenerateContentRequest) {
+        formattedGenerateContentRequest = Object.assign(Object.assign({}, formattedGenerateContentRequest), params.generateContentRequest);
+    }
+    else {
+        // Array or string
+        const content = formatNewContent(params);
+        formattedGenerateContentRequest.contents = [content];
+    }
+    return { generateContentRequest: formattedGenerateContentRequest };
+}
+function formatGenerateContentInput(params) {
+    let formattedRequest;
+    if (params.contents) {
+        formattedRequest = params;
+    }
+    else {
+        // Array or string
+        const content = formatNewContent(params);
+        formattedRequest = { contents: [content] };
+    }
+    if (params.systemInstruction) {
+        formattedRequest.systemInstruction = formatSystemInstruction(params.systemInstruction);
+    }
+    return formattedRequest;
+}
+function formatEmbedContentInput(params) {
+    if (typeof params === "string" || Array.isArray(params)) {
+        const content = formatNewContent(params);
+        return { content };
+    }
+    return params;
+}
+
+/**
+ * @license
+ * Copyright 2024 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+// https://ai.google.dev/api/rest/v1beta/Content#part
+const VALID_PART_FIELDS = [
+    "text",
+    "inlineData",
+    "functionCall",
+    "functionResponse",
+    "executableCode",
+    "codeExecutionResult",
+];
+const VALID_PARTS_PER_ROLE = {
+    user: ["text", "inlineData"],
+    function: ["functionResponse"],
+    model: ["text", "functionCall", "executableCode", "codeExecutionResult"],
+    // System instructions shouldn't be in history anyway.
+    system: ["text"],
+};
+function validateChatHistory(history) {
+    let prevContent = false;
+    for (const currContent of history) {
+        const { role, parts } = currContent;
+        if (!prevContent && role !== "user") {
+            throw new GoogleGenerativeAIError(`First content should be with role 'user', got ${role}`);
+        }
+        if (!POSSIBLE_ROLES.includes(role)) {
+            throw new GoogleGenerativeAIError(`Each item should include role field. Got ${role} but valid roles are: ${JSON.stringify(POSSIBLE_ROLES)}`);
+        }
+        if (!Array.isArray(parts)) {
+            throw new GoogleGenerativeAIError("Content should have 'parts' property with an array of Parts");
+        }
+        if (parts.length === 0) {
+            throw new GoogleGenerativeAIError("Each Content should have at least one part");
+        }
+        const countFields = {
+            text: 0,
+            inlineData: 0,
+            functionCall: 0,
+            functionResponse: 0,
+            fileData: 0,
+            executableCode: 0,
+            codeExecutionResult: 0,
+        };
+        for (const part of parts) {
+            for (const key of VALID_PART_FIELDS) {
+                if (key in part) {
+                    countFields[key] += 1;
+                }
+            }
+        }
+        const validParts = VALID_PARTS_PER_ROLE[role];
+        for (const key of VALID_PART_FIELDS) {
+            if (!validParts.includes(key) && countFields[key] > 0) {
+                throw new GoogleGenerativeAIError(`Content with role '${role}' can't contain '${key}' part`);
+            }
+        }
+        prevContent = true;
+    }
+}
+
+/**
+ * @license
+ * Copyright 2024 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/**
+ * Do not log a message for this error.
+ */
+const SILENT_ERROR = "SILENT_ERROR";
+/**
+ * ChatSession class that enables sending chat messages and stores
+ * history of sent and received messages so far.
+ *
+ * @public
+ */
+class ChatSession {
+    constructor(apiKey, model, params, _requestOptions = {}) {
+        this.model = model;
+        this.params = params;
+        this._requestOptions = _requestOptions;
+        this._history = [];
+        this._sendPromise = Promise.resolve();
+        this._apiKey = apiKey;
+        if (params === null || params === void 0 ? void 0 : params.history) {
+            validateChatHistory(params.history);
+            this._history = params.history;
+        }
+    }
+    /**
+     * Gets the chat history so far. Blocked prompts are not added to history.
+     * Blocked candidates are not added to history, nor are the prompts that
+     * generated them.
+     */
+    async getHistory() {
+        await this._sendPromise;
+        return this._history;
+    }
+    /**
+     * Sends a chat message and receives a non-streaming
+     * {@link GenerateContentResult}.
+     *
+     * Fields set in the optional {@link SingleRequestOptions} parameter will
+     * take precedence over the {@link RequestOptions} values provided to
+     * {@link GoogleGenerativeAI.getGenerativeModel }.
+     */
+    async sendMessage(request, requestOptions = {}) {
+        var _a, _b, _c, _d, _e, _f;
+        await this._sendPromise;
+        const newContent = formatNewContent(request);
+        const generateContentRequest = {
+            safetySettings: (_a = this.params) === null || _a === void 0 ? void 0 : _a.safetySettings,
+            generationConfig: (_b = this.params) === null || _b === void 0 ? void 0 : _b.generationConfig,
+            tools: (_c = this.params) === null || _c === void 0 ? void 0 : _c.tools,
+            toolConfig: (_d = this.params) === null || _d === void 0 ? void 0 : _d.toolConfig,
+            systemInstruction: (_e = this.params) === null || _e === void 0 ? void 0 : _e.systemInstruction,
+            cachedContent: (_f = this.params) === null || _f === void 0 ? void 0 : _f.cachedContent,
+            contents: [...this._history, newContent],
+        };
+        const chatSessionRequestOptions = Object.assign(Object.assign({}, this._requestOptions), requestOptions);
+        let finalResult;
+        // Add onto the chain.
+        this._sendPromise = this._sendPromise
+            .then(() => generateContent(this._apiKey, this.model, generateContentRequest, chatSessionRequestOptions))
+            .then((result) => {
+            var _a;
+            if (result.response.candidates &&
+                result.response.candidates.length > 0) {
+                this._history.push(newContent);
+                const responseContent = Object.assign({ parts: [], 
+                    // Response seems to come back without a role set.
+                    role: "model" }, (_a = result.response.candidates) === null || _a === void 0 ? void 0 : _a[0].content);
+                this._history.push(responseContent);
+            }
+            else {
+                const blockErrorMessage = formatBlockErrorMessage(result.response);
+                if (blockErrorMessage) {
+                    console.warn(`sendMessage() was unsuccessful. ${blockErrorMessage}. Inspect response object for details.`);
+                }
+            }
+            finalResult = result;
+        });
+        await this._sendPromise;
+        return finalResult;
+    }
+    /**
+     * Sends a chat message and receives the response as a
+     * {@link GenerateContentStreamResult} containing an iterable stream
+     * and a response promise.
+     *
+     * Fields set in the optional {@link SingleRequestOptions} parameter will
+     * take precedence over the {@link RequestOptions} values provided to
+     * {@link GoogleGenerativeAI.getGenerativeModel }.
+     */
+    async sendMessageStream(request, requestOptions = {}) {
+        var _a, _b, _c, _d, _e, _f;
+        await this._sendPromise;
+        const newContent = formatNewContent(request);
+        const generateContentRequest = {
+            safetySettings: (_a = this.params) === null || _a === void 0 ? void 0 : _a.safetySettings,
+            generationConfig: (_b = this.params) === null || _b === void 0 ? void 0 : _b.generationConfig,
+            tools: (_c = this.params) === null || _c === void 0 ? void 0 : _c.tools,
+            toolConfig: (_d = this.params) === null || _d === void 0 ? void 0 : _d.toolConfig,
+            systemInstruction: (_e = this.params) === null || _e === void 0 ? void 0 : _e.systemInstruction,
+            cachedContent: (_f = this.params) === null || _f === void 0 ? void 0 : _f.cachedContent,
+            contents: [...this._history, newContent],
+        };
+        const chatSessionRequestOptions = Object.assign(Object.assign({}, this._requestOptions), requestOptions);
+        const streamPromise = generateContentStream(this._apiKey, this.model, generateContentRequest, chatSessionRequestOptions);
+        // Add onto the chain.
+        this._sendPromise = this._sendPromise
+            .then(() => streamPromise)
+            // This must be handled to avoid unhandled rejection, but jump
+            // to the final catch block with a label to not log this error.
+            .catch((_ignored) => {
+            throw new Error(SILENT_ERROR);
+        })
+            .then((streamResult) => streamResult.response)
+            .then((response) => {
+            if (response.candidates && response.candidates.length > 0) {
+                this._history.push(newContent);
+                const responseContent = Object.assign({}, response.candidates[0].content);
+                // Response seems to come back without a role set.
+                if (!responseContent.role) {
+                    responseContent.role = "model";
+                }
+                this._history.push(responseContent);
+            }
+            else {
+                const blockErrorMessage = formatBlockErrorMessage(response);
+                if (blockErrorMessage) {
+                    console.warn(`sendMessageStream() was unsuccessful. ${blockErrorMessage}. Inspect response object for details.`);
+                }
+            }
+        })
+            .catch((e) => {
+            // Errors in streamPromise are already catchable by the user as
+            // streamPromise is returned.
+            // Avoid duplicating the error message in logs.
+            if (e.message !== SILENT_ERROR) {
+                // Users do not have access to _sendPromise to catch errors
+                // downstream from streamPromise, so they should not throw.
+                console.error(e);
+            }
+        });
+        return streamPromise;
+    }
+}
+
+/**
+ * @license
+ * Copyright 2024 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+async function countTokens(apiKey, model, params, singleRequestOptions) {
+    const response = await makeModelRequest(model, Task.COUNT_TOKENS, apiKey, false, JSON.stringify(params), singleRequestOptions);
+    return response.json();
+}
+
+/**
+ * @license
+ * Copyright 2024 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+async function embedContent(apiKey, model, params, requestOptions) {
+    const response = await makeModelRequest(model, Task.EMBED_CONTENT, apiKey, false, JSON.stringify(params), requestOptions);
+    return response.json();
+}
+async function batchEmbedContents(apiKey, model, params, requestOptions) {
+    const requestsWithModel = params.requests.map((request) => {
+        return Object.assign(Object.assign({}, request), { model });
+    });
+    const response = await makeModelRequest(model, Task.BATCH_EMBED_CONTENTS, apiKey, false, JSON.stringify({ requests: requestsWithModel }), requestOptions);
+    return response.json();
+}
+
+/**
+ * @license
+ * Copyright 2024 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/**
+ * Class for generative model APIs.
+ * @public
+ */
+class GenerativeModel {
+    constructor(apiKey, modelParams, _requestOptions = {}) {
+        this.apiKey = apiKey;
+        this._requestOptions = _requestOptions;
+        if (modelParams.model.includes("/")) {
+            // Models may be named "models/model-name" or "tunedModels/model-name"
+            this.model = modelParams.model;
+        }
+        else {
+            // If path is not included, assume it's a non-tuned model.
+            this.model = `models/${modelParams.model}`;
+        }
+        this.generationConfig = modelParams.generationConfig || {};
+        this.safetySettings = modelParams.safetySettings || [];
+        this.tools = modelParams.tools;
+        this.toolConfig = modelParams.toolConfig;
+        this.systemInstruction = formatSystemInstruction(modelParams.systemInstruction);
+        this.cachedContent = modelParams.cachedContent;
+    }
+    /**
+     * Makes a single non-streaming call to the model
+     * and returns an object containing a single {@link GenerateContentResponse}.
+     *
+     * Fields set in the optional {@link SingleRequestOptions} parameter will
+     * take precedence over the {@link RequestOptions} values provided to
+     * {@link GoogleGenerativeAI.getGenerativeModel }.
+     */
+    async generateContent(request, requestOptions = {}) {
+        var _a;
+        const formattedParams = formatGenerateContentInput(request);
+        const generativeModelRequestOptions = Object.assign(Object.assign({}, this._requestOptions), requestOptions);
+        return generateContent(this.apiKey, this.model, Object.assign({ generationConfig: this.generationConfig, safetySettings: this.safetySettings, tools: this.tools, toolConfig: this.toolConfig, systemInstruction: this.systemInstruction, cachedContent: (_a = this.cachedContent) === null || _a === void 0 ? void 0 : _a.name }, formattedParams), generativeModelRequestOptions);
+    }
+    /**
+     * Makes a single streaming call to the model and returns an object
+     * containing an iterable stream that iterates over all chunks in the
+     * streaming response as well as a promise that returns the final
+     * aggregated response.
+     *
+     * Fields set in the optional {@link SingleRequestOptions} parameter will
+     * take precedence over the {@link RequestOptions} values provided to
+     * {@link GoogleGenerativeAI.getGenerativeModel }.
+     */
+    async generateContentStream(request, requestOptions = {}) {
+        var _a;
+        const formattedParams = formatGenerateContentInput(request);
+        const generativeModelRequestOptions = Object.assign(Object.assign({}, this._requestOptions), requestOptions);
+        return generateContentStream(this.apiKey, this.model, Object.assign({ generationConfig: this.generationConfig, safetySettings: this.safetySettings, tools: this.tools, toolConfig: this.toolConfig, systemInstruction: this.systemInstruction, cachedContent: (_a = this.cachedContent) === null || _a === void 0 ? void 0 : _a.name }, formattedParams), generativeModelRequestOptions);
+    }
+    /**
+     * Gets a new {@link ChatSession} instance which can be used for
+     * multi-turn chats.
+     */
+    startChat(startChatParams) {
+        var _a;
+        return new ChatSession(this.apiKey, this.model, Object.assign({ generationConfig: this.generationConfig, safetySettings: this.safetySettings, tools: this.tools, toolConfig: this.toolConfig, systemInstruction: this.systemInstruction, cachedContent: (_a = this.cachedContent) === null || _a === void 0 ? void 0 : _a.name }, startChatParams), this._requestOptions);
+    }
+    /**
+     * Counts the tokens in the provided request.
+     *
+     * Fields set in the optional {@link SingleRequestOptions} parameter will
+     * take precedence over the {@link RequestOptions} values provided to
+     * {@link GoogleGenerativeAI.getGenerativeModel }.
+     */
+    async countTokens(request, requestOptions = {}) {
+        const formattedParams = formatCountTokensInput(request, {
+            model: this.model,
+            generationConfig: this.generationConfig,
+            safetySettings: this.safetySettings,
+            tools: this.tools,
+            toolConfig: this.toolConfig,
+            systemInstruction: this.systemInstruction,
+            cachedContent: this.cachedContent,
+        });
+        const generativeModelRequestOptions = Object.assign(Object.assign({}, this._requestOptions), requestOptions);
+        return countTokens(this.apiKey, this.model, formattedParams, generativeModelRequestOptions);
+    }
+    /**
+     * Embeds the provided content.
+     *
+     * Fields set in the optional {@link SingleRequestOptions} parameter will
+     * take precedence over the {@link RequestOptions} values provided to
+     * {@link GoogleGenerativeAI.getGenerativeModel }.
+     */
+    async embedContent(request, requestOptions = {}) {
+        const formattedParams = formatEmbedContentInput(request);
+        const generativeModelRequestOptions = Object.assign(Object.assign({}, this._requestOptions), requestOptions);
+        return embedContent(this.apiKey, this.model, formattedParams, generativeModelRequestOptions);
+    }
+    /**
+     * Embeds an array of {@link EmbedContentRequest}s.
+     *
+     * Fields set in the optional {@link SingleRequestOptions} parameter will
+     * take precedence over the {@link RequestOptions} values provided to
+     * {@link GoogleGenerativeAI.getGenerativeModel }.
+     */
+    async batchEmbedContents(batchEmbedContentRequest, requestOptions = {}) {
+        const generativeModelRequestOptions = Object.assign(Object.assign({}, this._requestOptions), requestOptions);
+        return batchEmbedContents(this.apiKey, this.model, batchEmbedContentRequest, generativeModelRequestOptions);
+    }
+}
+
+/**
+ * @license
+ * Copyright 2024 Google LLC
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *   http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+/**
+ * Top-level class for this SDK
+ * @public
+ */
+class GoogleGenerativeAI {
+    constructor(apiKey) {
+        this.apiKey = apiKey;
+    }
+    /**
+     * Gets a {@link GenerativeModel} instance for the provided model name.
+     */
+    getGenerativeModel(modelParams, requestOptions) {
+        if (!modelParams.model) {
+            throw new GoogleGenerativeAIError(`Must provide a model name. ` +
+                `Example: genai.getGenerativeModel({ model: 'my-model-name' })`);
+        }
+        return new GenerativeModel(this.apiKey, modelParams, requestOptions);
+    }
+    /**
+     * Creates a {@link GenerativeModel} instance from provided content cache.
+     */
+    getGenerativeModelFromCachedContent(cachedContent, modelParams, requestOptions) {
+        if (!cachedContent.name) {
+            throw new GoogleGenerativeAIRequestInputError("Cached content must contain a `name` field.");
+        }
+        if (!cachedContent.model) {
+            throw new GoogleGenerativeAIRequestInputError("Cached content must contain a `model` field.");
+        }
+        /**
+         * Not checking tools and toolConfig for now as it would require a deep
+         * equality comparison and isn't likely to be a common case.
+         */
+        const disallowedDuplicates = ["model", "systemInstruction"];
+        for (const key of disallowedDuplicates) {
+            if ((modelParams === null || modelParams === void 0 ? void 0 : modelParams[key]) &&
+                cachedContent[key] &&
+                (modelParams === null || modelParams === void 0 ? void 0 : modelParams[key]) !== cachedContent[key]) {
+                if (key === "model") {
+                    const modelParamsComp = modelParams.model.startsWith("models/")
+                        ? modelParams.model.replace("models/", "")
+                        : modelParams.model;
+                    const cachedContentComp = cachedContent.model.startsWith("models/")
+                        ? cachedContent.model.replace("models/", "")
+                        : cachedContent.model;
+                    if (modelParamsComp === cachedContentComp) {
+                        continue;
+                    }
+                }
+                throw new GoogleGenerativeAIRequestInputError(`Different value for "${key}" specified in modelParams` +
+                    ` (${modelParams[key]}) and cachedContent (${cachedContent[key]})`);
+            }
+        }
+        const modelParamsFromCache = Object.assign(Object.assign({}, modelParams), { model: cachedContent.model, tools: cachedContent.tools, toolConfig: cachedContent.toolConfig, systemInstruction: cachedContent.systemInstruction, cachedContent });
+        return new GenerativeModel(this.apiKey, modelParamsFromCache, requestOptions);
+    }
+}
+
+function getFullFilePath(file_path) {
+    if (!process.env.GITHUB_WORKSPACE)
+        throw new Error('GITHUB_WORKSPACE is not set');
+    return path.join(process.env.GITHUB_WORKSPACE, file_path);
+}
+async function getPromnt() {
+    const prompt_file_path = getFullFilePath(coreExports.getInput('prompt_file_path'));
+    const prompt_file_exists = await access(prompt_file_path)
+        .then(() => true)
+        .catch(() => false);
+    // check that file exists
+    if (!prompt_file_exists) {
+        throw new Error(`Prompt file ${prompt_file_path} does not exist`);
+    }
+    // get prompt file content
+    let prompt_file_content = await readFile(prompt_file_path, 'utf8');
+    coreExports.startGroup('Prompt file content');
+    coreExports.debug(prompt_file_content);
+    coreExports.endGroup();
+    // prompt has templates for file to embed using filepath is brackets
+    // get list of file names from the prompt file
+    const file_names = prompt_file_content.match(/\{\{(.*?)\}\}/g);
+    if (!file_names)
+        return prompt_file_content;
+    for (const file_name of file_names) {
+        const file_path = getFullFilePath(file_name.replace(/\{\{(.*?)\}\}/g, '$1'));
+        const file_exists = await access(file_path)
+            .then(() => true)
+            .catch(() => false);
+        if (!file_exists) {
+            coreExports.setFailed(`File ${file_path} does not exist`);
+        }
+        const file_content = await readFile(file_path, 'utf8');
+        coreExports.startGroup(`File ${file_name}`);
+        coreExports.debug(file_content);
+        coreExports.endGroup();
+        prompt_file_content = prompt_file_content.replace(file_name, file_content);
+    }
+    coreExports.startGroup('Prompt file content after embedding');
+    coreExports.debug(prompt_file_content);
+    coreExports.endGroup();
+    return prompt_file_content;
+}
+async function callLLM(prompt) {
+    coreExports.startGroup('Calling Gemini API');
+    const apiKey = coreExports.getInput('gemini_api_key');
+    if (!apiKey)
+        throw new Error('Gemini API key is not set');
+    const genAI = new GoogleGenerativeAI(apiKey);
+    const model = genAI.getGenerativeModel({
+        model: 'gemini-2.0-flash-001',
+    });
+    const { response } = await model.generateContent({
+        generationConfig: {
+            temperature: 0,
+            topP: 0.95,
+            topK: 64,
+            maxOutputTokens: 65536,
+            candidateCount: 1,
+            responseMimeType: 'application/json',
+        },
+        contents: [
+            {
+                role: 'user',
+                parts: [{ text: prompt }],
+            },
+        ],
+    });
+    const parsed = JSON.parse(response.text());
+    coreExports.debug(JSON.stringify(parsed, null, 2));
+    if (typeof parsed !== 'object') {
+        throw new Error('Failed to get valid response from Gemini API');
+    }
+    if (typeof parsed.total_score !== 'number' || typeof parsed.feedback !== 'string' || typeof parsed.tasks !== 'object') {
+        throw new Error('Failed to get valid response from Gemini API');
+    }
+    // check if all tasks are numbers
+    for (const taskName in parsed.tasks) {
+        if (typeof parsed.tasks[taskName] !== 'number') {
+            throw new Error('Failed to get valid response from Gemini API');
+        }
+    }
+    coreExports.endGroup();
+    return parsed;
+}
+function writeResultToOutput(response) {
+    const max_score = Object.keys(response.tasks).length;
+    const status = response.total_score / max_score > 0.75 ? 'pass' : 'fail';
+    const result = {
+        version: 1,
+        status,
+        max_score,
+        tests: [
+            {
+                score: response.total_score,
+                status: response.total_score > 0 ? 'pass' : 'fail',
+                message: response.feedback,
+            },
+        ],
+    };
+    coreExports.setOutput('result', btoa(JSON.stringify(result)));
+}
 /**
  * The main function for the action.
  *
@@ -27267,15 +28811,9 @@ async function wait(milliseconds) {
  */
 async function run() {
     try {
-        const ms = coreExports.getInput('milliseconds');
-        // Debug logs are only output if the `ACTIONS_STEP_DEBUG` secret is true
-        coreExports.debug(`Waiting ${ms} milliseconds ...`);
-        // Log the current timestamp, wait, then log the new timestamp
-        coreExports.debug(new Date().toTimeString());
-        await wait(parseInt(ms, 10));
-        coreExports.debug(new Date().toTimeString());
-        // Set outputs for other workflow steps to use
-        coreExports.setOutput('time', new Date().toTimeString());
+        const prompt = await getPromnt();
+        const response = await callLLM(prompt);
+        writeResultToOutput(response);
     }
     catch (error) {
         // Fail the workflow run if an error occurs
